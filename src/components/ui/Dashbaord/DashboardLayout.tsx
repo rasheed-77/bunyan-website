@@ -25,7 +25,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-indigo-900">لوحة المشاريع</h1>
             <div className="flex items-center gap-4">
-              <Image src="/Image/agent1.jpg" alt="" width={40} height={40} className="w-10 h-10 rounded-full object-cover" />
+              <Image src="/Image/Image.png" alt="" width={40} height={40} className="w-10 h-10 rounded-full object-cover" />
               <span className="font-medium">مستخدم</span>
             </div>
           </div>

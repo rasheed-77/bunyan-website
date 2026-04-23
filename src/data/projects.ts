@@ -2,7 +2,7 @@
  * مشاريع شركة بنيان — ملف البيانات للواجهة
  *
  * القائمة أدناه تحتوي فقط على المشاريع المرتبطة بصور حقيقية تحت
- * `public/Image/First Project` … `Sixth Project`.
+ * `public/Image/First Project` … `sixth project`.
  *
  * تسمية الحقول البرمجية ثابتة؛ التعليقات العربية توضّح معنى كل حقل في الواجهة.
  */
@@ -121,7 +121,7 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
     ],
     images: [
       "/Image/First Project/Display picture.png",
-      "/Image/First Project/Official Picture display 1.jpg",
+      "/Image/First Project/picture.jpg",
       "/Image/First Project/PHOTO-2026-02-12-11-27-50.jpg",
       "/Image/First Project/PHOTO-2026-02-12-11-27-51 2.jpg",
       "/Image/First Project/PHOTO-2026-02-12-11-27-51 3.jpg",
@@ -267,7 +267,7 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/Thired Project/design -arch/Screenshot 2026-04-19 230346.png",
       "/Image/Thired Project/design -arch/Screenshot 2026-04-19 230354.png",
     ],
-    finalViewGallery: ["/Image/Thired Project/Final Look 1.jpg"],
+    finalViewGallery: ["/Image/Thired Project/Final Look.png"],
     finalViewNotice:
       "تم إيقاف المشروع عند هذه المرحلة بناءً على طلب المالك، لذلك فإن الشكل النهائي الحالي لا يمثل التصميم النهائي الكامل المقترح في المخططات.",
   },
@@ -326,7 +326,6 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/Fourth Project/design - arch/Screenshot 2026-04-20 145710.png",
       "/Image/Fourth Project/design - arch/Screenshot 2026-04-20 145720.png",
     ],
-    finalViewGallery: ["/Image/Fourth Project/Final Look Picture.jpg"],
   },
 
   // ─── نموذج 5 — استبدال ───
@@ -359,7 +358,6 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/Fifthe Project/design - arch/Screenshot 2026-04-22 145313.png",
       "/Image/Fifthe Project/design - arch/Screenshot 2026-04-22 145328.png",
     ],
-    finalViewGallery: ["/Image/Fifthe Project/Final Look picture.jpg"],
     visualLayout: "imageFocused",
     simpleInfoCards: [
       { label: "اسم المشروع", value: "مسجد حصة" },
@@ -389,13 +387,13 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "تجهيز الوثائق الفنية للمراجعة والتنفيذ",
     ],
     images: [
-      "/Image/Sixth Project/Display picture.jpg",
-      "/Image/Sixth Project/PHOTO-2026-02-12-12-03-01 2.jpg",
-      "/Image/Sixth Project/PHOTO-2026-02-12-12-03-01 3.jpg",
-      "/Image/Sixth Project/PHOTO-2026-02-12-12-03-01.jpg",
-      "/Image/Sixth Project/PHOTO-2026-02-12-12-05-47 2.jpg",
-      "/Image/Sixth Project/PHOTO-2026-02-12-12-05-47 3.jpg",
-      "/Image/Sixth Project/PHOTO-2026-02-12-12-05-47 4.jpg",
+      "/Image/sixth project/Display picture.jpg",
+      "/Image/sixth project/PHOTO-2026-02-12-12-03-01 2.jpg",
+      "/Image/sixth project/PHOTO-2026-02-12-12-03-01 3.jpg",
+      "/Image/sixth project/PHOTO-2026-02-12-12-03-01.jpg",
+      "/Image/sixth project/PHOTO-2026-02-12-12-05-47 2.jpg",
+      "/Image/sixth project/PHOTO-2026-02-12-12-05-47 3.jpg",
+      "/Image/sixth project/PHOTO-2026-02-12-12-05-47 4.jpg",
     ],
     extendedSheet: {
       referenceCode: "ARCH-2016-VILLA-B",
@@ -425,11 +423,11 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       ],
     },
     designGallery: [
-      "/Image/Sixth Project/design - arch/Screenshot 2026-04-23 115210.png",
-      "/Image/Sixth Project/design - arch/Screenshot 2026-04-23 115223.png",
-      "/Image/Sixth Project/design - arch/Screenshot 2026-04-23 115240.png",
-      "/Image/Sixth Project/design - arch/Screenshot 2026-04-23 115254.png",
-      "/Image/Sixth Project/design - arch/Screenshot 2026-04-23 115318.png",
+      "/Image/sixth project/design - arch/Screenshot 2026-04-23 115210.png",
+      "/Image/sixth project/design - arch/Screenshot 2026-04-23 115223.png",
+      "/Image/sixth project/design - arch/Screenshot 2026-04-23 115240.png",
+      "/Image/sixth project/design - arch/Screenshot 2026-04-23 115254.png",
+      "/Image/sixth project/design - arch/Screenshot 2026-04-23 115318.png",
     ],
   },
 
@@ -443,6 +441,6 @@ export function getProjectById(id: number) {
 export function getProjectCoverImage(project: ProjectRecord): string {
   return (
     project.images[0] ??
-    "/Image/First Project/Official Picture display 1.jpg"
+    "/Image/First Project/Display picture.png"
   );
 }

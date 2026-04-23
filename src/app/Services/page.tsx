@@ -56,7 +56,7 @@ export default function Services() {
               className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 transition-all duration-300 hover:shadow-xl"
             >
               <Image
-                src="/Image/services.webp"
+                src="/Image/Message Picture.jpg"
                 alt=""
                 width={500}
                 height={300}

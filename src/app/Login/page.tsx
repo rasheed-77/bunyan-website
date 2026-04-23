@@ -33,7 +33,7 @@ function App() {
               </p>
               <div className="w-full h-64 md:h-auto rounded-lg flex items-center justify-center relative">
                 <Image
-                  src="/Image/house.jpeg"
+                  src="/Image/who are we 3.png"
                   alt="مبنى"
                   width={400}
                   height={300}

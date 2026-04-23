@@ -3,7 +3,7 @@ import Navbar from "../../common/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
-const HERO_IMAGE = "/Image/hero_bg_1.jpg";
+const HERO_IMAGE = "/Image/Message Picture.jpg";
 
 export default function Header() {
   return (
