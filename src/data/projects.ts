@@ -267,7 +267,7 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/Thired Project/design -arch/Screenshot 2026-04-19 230346.png",
       "/Image/Thired Project/design -arch/Screenshot 2026-04-19 230354.png",
     ],
-    finalViewGallery: ["/Image/Thired Project/Final Look.png"],
+    finalViewGallery: ["/Image/Thired Project/final Look Picture.jpg"],
     finalViewNotice:
       "تم إيقاف المشروع عند هذه المرحلة بناءً على طلب المالك، لذلك فإن الشكل النهائي الحالي لا يمثل التصميم النهائي الكامل المقترح في المخططات.",
   },

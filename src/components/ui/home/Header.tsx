@@ -1,26 +1,21 @@
 "use client";
 import Navbar from "../../common/Navbar";
-import Image from "next/image";
 import Link from "next/link";
-
-const HERO_IMAGE = "/Image/Message Picture.jpg";
 
 export default function Header() {
   return (
     <div className="relative">
       <Navbar />
-      <div className="relative w-full min-h-screen overflow-hidden">
+      <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-900">
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className="absolute inset-0">
-            <Image
-              src={HERO_IMAGE}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority
-            />
-          </div>
+          <div
+            className="pointer-events-none absolute -top-24 end-[-8%] h-80 w-80 rounded-full bg-amber-400/10 blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -bottom-20 start-[-10%] h-96 w-96 rounded-full bg-indigo-400/15 blur-3xl"
+            aria-hidden
+          />
           <div
             className="absolute inset-0 z-10 bg-gradient-to-b from-slate-950/75 via-slate-900/55 to-indigo-950/80"
             aria-hidden

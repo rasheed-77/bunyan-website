@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 
-const ABOUT_IMAGE = "/Image/who are we 2.png";
+const ABOUT_IMAGE = "/Image/hints about the company.png";
 
 export default function CompanyIntro() {
   return (
