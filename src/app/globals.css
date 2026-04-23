@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    direction: rtl;
+  }
+
+  body {
+    background-color: #ffffff;
+  }
+
+  a,
+  button {
+    transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+    transition-duration: 250ms;
+    transition-timing-function: ease;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl font-bold tracking-tight text-indigo-950 sm:text-4xl;
+  }
+
+  .section-subtitle {
+    @apply text-slate-600 leading-relaxed;
+  }
+
+  .ui-card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .ui-image-hover {
+    @apply transition-transform duration-500 ease-out group-hover:scale-[1.03];
+  }
+}
