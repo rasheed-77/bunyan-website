@@ -38,9 +38,9 @@ export default function Services() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto py-20 px-4 sm:px-6 lg:px-40 lg:mt-9 sm:mt-4">
+      <div className="container mx-auto py-24 px-4 sm:px-6 lg:px-40 lg:mt-9 sm:mt-4">
         <section className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-indigo-950 mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-dark mb-4">
             خدماتنا
           </h1>
           <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -53,7 +53,7 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 transition-all duration-300 hover:shadow-xl"
+              className="bg-white p-8 rounded-xl shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-md hover:shadow-primary/15 hover:border-primary/60"
             >
               <Image
                 src="/Image/Message Picture.jpg"
@@ -62,7 +62,7 @@ export default function Services() {
                 height={300}
                 className="rounded-lg mb-4 object-cover w-full h-48"
               />
-              <h2 className="text-2xl font-bold text-indigo-950 mb-2">
+              <h2 className="text-2xl font-bold text-dark mb-2">
                 {service.title}
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
@@ -70,7 +70,7 @@ export default function Services() {
               </p>
               <Link
                 href="/Contact_us"
-                className="inline-block text-center w-full text-lg font-bold rounded-lg py-3 px-4 text-white bg-indigo-900 hover:bg-indigo-800 transition duration-300"
+                className="inline-block text-center w-full text-lg font-bold rounded-lg py-3 px-4 text-dark bg-primary hover:bg-[#c8a574] transition duration-300"
               >
                 اطلب استشارة
               </Link>
@@ -79,7 +79,7 @@ export default function Services() {
         </section>
 
         <section className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-semibold text-indigo-950 mb-6">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-dark mb-6">
             لماذا بنيان؟
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 mb-16 max-w-3xl mx-auto leading-relaxed">
@@ -116,10 +116,10 @@ export default function Services() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-lg text-center border border-slate-100 transition-all duration-300 hover:shadow-xl"
+                className="bg-white p-6 rounded-xl shadow-sm text-center border border-slate-200 transition-all duration-300 hover:shadow-md hover:shadow-primary/15 hover:border-primary/60"
               >
-                <item.icon className="text-4xl text-indigo-900 mb-4 mx-auto" />
-                <h3 className="text-xl font-bold text-indigo-950 mb-2">
+                <item.icon className="text-4xl text-primary mb-4 mx-auto" />
+                <h3 className="text-xl font-bold text-dark mb-2">
                   {item.title}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">{item.description}</p>
@@ -129,7 +129,7 @@ export default function Services() {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-semibold text-indigo-950 mb-10 text-center">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-dark mb-10 text-center">
             آلية العمل
           </h2>
           <div className="flex flex-col md:flex-row justify-between items-stretch gap-8 md:gap-4">
@@ -159,10 +159,10 @@ export default function Services() {
                 key={index}
                 className="flex flex-col items-center flex-1 mb-8 md:mb-0"
               >
-                <div className="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-dark text-xl font-bold mb-4">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-bold text-indigo-950 mb-2 text-center">
+                <h3 className="text-xl font-bold text-dark mb-2 text-center">
                   {item.title}
                 </h3>
                 <p className="text-center text-slate-600 max-w-xs leading-relaxed">
@@ -173,8 +173,8 @@ export default function Services() {
           </div>
         </section>
 
-        <section className="bg-indigo-50 p-8 rounded-xl shadow-lg border border-indigo-100">
-          <h2 className="text-3xl sm:text-4xl font-semibold text-indigo-950 mb-6 text-center">
+        <section className="bg-light p-8 rounded-xl shadow-sm border border-slate-200">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-dark mb-6 text-center">
             جاهزون لبدء مشروعك؟
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 mb-8 text-center max-w-3xl mx-auto leading-relaxed">
@@ -184,7 +184,7 @@ export default function Services() {
           <div className="text-center">
             <Link
               href="/Contact_us"
-              className="inline-block text-xl font-bold rounded-lg py-3 px-8 text-white bg-indigo-900 hover:bg-indigo-800 transition duration-300"
+              className="inline-block text-xl font-bold rounded-lg py-3 px-8 text-dark bg-primary hover:bg-[#c8a574] transition duration-300"
             >
               تواصل معنا الآن
             </Link>

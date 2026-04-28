@@ -32,12 +32,12 @@ const pillars = [
 
 export default function WhyBunyan() {
   return (
-    <section className="bg-gradient-to-b from-indigo-950 to-indigo-900 text-white py-16 md:py-20 px-4 sm:px-6 lg:px-32">
+    <section className="bg-gradient-to-b from-[#27231e] to-dark text-white py-20 md:py-24 px-4 sm:px-6 lg:px-32">
       <div className="container mx-auto max-w-6xl">
         <h2 className="section-title mb-4 text-center text-white md:text-4xl">
           لماذا بنيان؟
         </h2>
-        <p className="text-center text-indigo-100/95 max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p className="text-center text-slate-200 max-w-2xl mx-auto mb-12 leading-relaxed">
           نؤمن بأن سمعة الشركة تُبنى مشروعاً بعد مشروع — هذه محاور عملنا
           الأساسية.
         </p>
@@ -45,7 +45,7 @@ export default function WhyBunyan() {
           {pillars.map((item) => (
             <motion.div
               key={item.title}
-              className="ui-card-hover flex flex-col items-center rounded-2xl border border-indigo-100/60 bg-white p-6 text-center text-indigo-950 shadow-lg"
+              className="ui-card-hover flex flex-col items-center rounded-2xl border border-slate-200 bg-light p-6 text-center text-dark shadow-sm hover:border-primary/60"
               whileHover={{ y: -4 }}
               transition={{ duration: 0.25 }}
             >

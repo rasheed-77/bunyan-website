@@ -29,9 +29,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/90 py-3 backdrop-blur-md transition-all duration-300 md:py-4 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/95 py-3 backdrop-blur-md transition-all duration-300 md:py-4 ${
         isScrolled
-          ? "py-2 md:py-3 shadow-lg shadow-slate-900/10"
+          ? "py-2 md:py-3 shadow-md shadow-slate-900/10"
           : "shadow-sm shadow-slate-900/5"
       }`}
     >
@@ -50,10 +50,10 @@ export default function Navbar() {
               className="h-9 w-9 md:h-11 md:w-11 object-contain shrink-0"
               priority
             />
-            <span className="min-w-0 text-start font-bold text-indigo-950 leading-snug text-xs sm:text-sm md:text-base">
+            <span className="min-w-0 text-start font-bold text-dark leading-snug text-xs sm:text-sm md:text-base">
               <span className="block sm:inline">بنيان للعقارات</span>
               <span className="hidden sm:inline"> </span>
-              <span className="block sm:inline text-slate-700 font-semibold sm:text-indigo-950">
+              <span className="block sm:inline text-slate-700 font-semibold sm:text-dark">
                 والمقاولات العامة
               </span>
             </span>
@@ -62,7 +62,7 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center shrink-0">
             <button
               type="button"
-              className="text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-700 rounded-md p-1"
+              className="text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1"
               onClick={handleMobileMenuToggle}
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
@@ -82,7 +82,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="rounded-md border-b border-slate-50 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-all duration-200 ease-in-out hover:bg-indigo-50/70 hover:text-indigo-800 lg:border-0 lg:py-2 lg:text-center"
+                  className="rounded-md border-b border-slate-50 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-all duration-200 ease-in-out hover:bg-primary/15 hover:text-dark lg:border-0 lg:py-2 lg:text-center"
                 >
                   {link.label}
                 </Link>

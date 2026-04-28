@@ -1,5 +1,6 @@
 import Header from "@/components/ui/home/Header";
 import CompanyIntro from "@/components/ui/home/CompanyIntro";
+import IntroVideo from "@/components/ui/home/IntroVideo";
 import VisionMission from "@/components/ui/home/VisionMission";
 import ServicesPreview from "@/components/ui/home/ServicesPreview";
 import FeaturedProjects from "@/components/ui/home/Properties";
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <Header />
       <CompanyIntro />
+      <IntroVideo />
       <VisionMission />
       <ServicesPreview />
       <FeaturedProjects />

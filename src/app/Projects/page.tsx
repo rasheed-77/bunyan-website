@@ -17,7 +17,7 @@ const ProjectCard: React.FC<{ project: ProjectRecord }> = ({ project }) => {
   const cover = getProjectCoverImage(project);
   return (
     <motion.article
-      className="group ui-card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md shadow-slate-900/5 hover:border-indigo-200/80 hover:shadow-slate-900/10"
+      className="group ui-card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm shadow-slate-900/5 hover:border-primary/60 hover:shadow-primary/15"
       whileHover={{ y: -3 }}
       transition={{ duration: 0.22 }}
     >
@@ -44,17 +44,17 @@ const ProjectCard: React.FC<{ project: ProjectRecord }> = ({ project }) => {
           </span>
         ) : null}
         <span className="absolute bottom-3 start-3 end-3 inline-flex max-w-[calc(100%-1.5rem)]">
-          <span className="truncate rounded-lg bg-white/95 px-3 py-1 text-xs font-bold text-indigo-950 shadow-sm ring-1 ring-slate-200/80 backdrop-blur-sm sm:text-sm">
+          <span className="truncate rounded-lg bg-white/95 px-3 py-1 text-xs font-bold text-dark shadow-sm ring-1 ring-slate-200/80 backdrop-blur-sm sm:text-sm">
             {project.type}
           </span>
         </span>
       </Link>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h2 className="text-lg font-bold leading-snug text-indigo-950 sm:text-xl">
+        <h2 className="text-lg font-bold leading-snug text-dark sm:text-xl">
           <Link
             href={`/Projects/${project.id}`}
-            className="transition hover:text-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 rounded-sm"
+            className="transition hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
           >
             {project.title}
           </Link>
@@ -74,7 +74,7 @@ const ProjectCard: React.FC<{ project: ProjectRecord }> = ({ project }) => {
 
         <Link
           href={`/Projects/${project.id}`}
-          className="mt-5 inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-xl bg-indigo-900 px-4 py-2.5 text-center text-sm font-bold text-white shadow-md transition hover:bg-indigo-800 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400/90 sm:text-base"
+          className="mt-5 inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-bold text-dark shadow-sm transition hover:bg-[#c8a574] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:text-base"
         >
           عرض التفاصيل
         </Link>
@@ -87,10 +87,10 @@ export default function ProjectsPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-[60vh] bg-slate-50/80">
+      <main className="min-h-[60vh] bg-light">
         <div className="border-b border-slate-200/90 bg-white">
           <div className="container mx-auto max-w-7xl px-4 pb-12 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32">
-            <p className="mb-2 text-center text-sm font-semibold tracking-wide text-amber-700 sm:text-start">
+            <p className="mb-2 text-center text-sm font-semibold tracking-wide text-primary sm:text-start">
               معرض أعمال التنفيذ
             </p>
             <h1 className="section-title text-center leading-tight sm:text-start lg:text-5xl">

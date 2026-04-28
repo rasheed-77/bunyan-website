@@ -40,7 +40,7 @@ const items = [
 
 export default function ServicesPreview() {
   return (
-    <section className="bg-white py-16 md:py-20 px-4 sm:px-6 lg:px-32">
+    <section className="bg-light py-20 md:py-24 px-4 sm:px-6 lg:px-32">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
@@ -54,7 +54,7 @@ export default function ServicesPreview() {
           </div>
           <Link
             href="/Services"
-            className="inline-flex justify-center items-center shrink-0 rounded-xl bg-indigo-900 text-white font-bold px-6 py-3 hover:bg-indigo-800 transition shadow-md"
+            className="inline-flex justify-center items-center shrink-0 rounded-xl bg-primary text-dark font-bold px-6 py-3 hover:bg-[#c8a574] transition shadow-sm"
           >
             جميع الخدمات
           </Link>
@@ -63,10 +63,10 @@ export default function ServicesPreview() {
           {items.map((item) => (
             <div
               key={item.title}
-              className="ui-card-hover rounded-2xl border border-slate-200 bg-slate-50/80 p-6 md:p-8 hover:border-indigo-200"
+              className="ui-card-hover rounded-2xl border border-slate-200 bg-white p-6 md:p-8 hover:border-primary/60"
             >
-              <item.icon className="text-3xl text-indigo-800 mb-4" />
-              <h3 className="text-xl font-bold text-indigo-950 mb-2">
+              <item.icon className="text-3xl text-primary mb-4" />
+              <h3 className="text-xl font-bold text-dark mb-2">
                 {item.title}
               </h3>
               <p className="text-slate-600 leading-relaxed">{item.desc}</p>

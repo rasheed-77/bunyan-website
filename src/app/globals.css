@@ -8,7 +8,8 @@
   }
 
   body {
-    background-color: #ffffff;
+    background-color: #f8f6f2;
+    color: #1f1f1f;
   }
 
   a,
@@ -21,15 +22,15 @@
 
 @layer components {
   .section-title {
-    @apply text-3xl font-bold tracking-tight text-indigo-950 sm:text-4xl;
+    @apply text-3xl font-bold tracking-tight text-dark sm:text-4xl;
   }
 
   .section-subtitle {
-    @apply text-slate-600 leading-relaxed;
+    @apply text-slate-700 leading-relaxed;
   }
 
   .ui-card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-primary/20;
   }
 
   .ui-image-hover {

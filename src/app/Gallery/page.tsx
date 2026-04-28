@@ -11,9 +11,9 @@ export default function GalleryPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-slate-50 px-4 pt-24 pb-20">
+      <main className="min-h-screen bg-light px-4 pt-24 pb-20">
         <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-indigo-950 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-dark mb-4">
             معرض الصور
           </h1>
           <p className="text-slate-600 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">

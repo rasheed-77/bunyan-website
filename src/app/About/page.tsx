@@ -19,16 +19,16 @@ export default function About() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto py-20 px-4 sm:px-6 lg:px-40 lg:mt-9 sm:mt-4">
+      <div className="container mx-auto py-24 px-4 sm:px-6 lg:px-40 lg:mt-9 sm:mt-4">
         <section className="mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div className="text-center lg:text-start">
-              <h1 className="text-4xl sm:text-5xl font-bold text-indigo-950 mb-4">
+              <h1 className="text-4xl sm:text-5xl font-bold text-dark mb-4">
                 من نحن
               </h1>
               <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 شركة{" "}
-                <strong className="text-indigo-900">
+                <strong className="text-dark">
                   بنيان للعقارات والمقاولات العامة
                 </strong>{" "}
                 — نجمع بين الخبرة الميدانية والتخطيط
@@ -36,7 +36,7 @@ export default function About() {
                 ونبني مع شركائنا علاقات طويلة الأمد مبنية على الثقة والشفافية.
               </p>
             </div>
-            <div className="relative w-full aspect-[4/3] max-h-[380px] rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200/80">
+            <div className="relative w-full aspect-[4/3] max-h-[380px] rounded-2xl overflow-hidden shadow-md ring-1 ring-slate-200/80">
               <Image
                 src={ABOUT_HERO_IMAGE}
                 alt="من نحن — بنيان للعقارات والمقاولات العامة"
@@ -52,7 +52,7 @@ export default function About() {
         <section className="mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="lg:order-1 flex flex-col justify-center">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-indigo-950 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-dark mb-4">
                 قصتنا
               </h2>
               <p className="text-base text-slate-600 mb-6 leading-relaxed">
@@ -67,7 +67,7 @@ export default function About() {
                 لأن سمعتنا تُبنى مشروعاً بعد مشروع.
               </p>
             </div>
-            <div className="relative w-full h-64 sm:h-80 lg:order-2 rounded-2xl overflow-hidden shadow-lg ring-1 ring-slate-200/80">
+            <div className="relative w-full h-64 sm:h-80 lg:order-2 rounded-2xl overflow-hidden shadow-sm ring-1 ring-slate-200/80">
               <Image
                 src={ABOUT_STORY_IMAGE}
                 alt="قصة شركة بنيان"
@@ -81,7 +81,7 @@ export default function About() {
 
         <section className="mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative w-full h-64 sm:h-80 lg:order-1 rounded-2xl overflow-hidden shadow-lg ring-1 ring-slate-200/80">
+            <div className="relative w-full h-64 sm:h-80 lg:order-1 rounded-2xl overflow-hidden shadow-sm ring-1 ring-slate-200/80">
               <Image
                 src={ABOUT_COMMITMENT_IMAGE}
                 alt="رسالة شركة بنيان"
@@ -91,7 +91,7 @@ export default function About() {
               />
             </div>
             <div className="lg:order-2 flex flex-col justify-center">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-indigo-950 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-dark mb-4">
                 التزامنا
               </h2>
               <p className="text-base text-slate-600 mb-6 leading-relaxed">
@@ -108,10 +108,10 @@ export default function About() {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-semibold text-indigo-950 mb-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-dark mb-6 text-center">
             هيكلنا والعمل
           </h2>
-          <div className="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-8 md:p-10 text-slate-700 leading-relaxed text-center md:text-justify">
+          <div className="max-w-3xl mx-auto bg-light border border-slate-200 rounded-2xl p-8 md:p-10 text-slate-700 leading-relaxed text-center md:text-justify shadow-sm">
             <p className="mb-4">
               نعتمد هيكلاً تنظيمياً يجمع بين الإدارة الهندسية والمالية والميدانية،
               مع فرق تنفيذ متخصصة حسب نوع المشروع. لا نعرض على الموقع أسماء أو
@@ -120,7 +120,7 @@ export default function About() {
             </p>
             <p>
               للاستفسارات الإعلامية أو الشراكات، يرجى التواصل عبر صفحة{" "}
-              <Link href="/Contact_us" className="font-bold text-indigo-800 underline">
+              <Link href="/Contact_us" className="font-bold text-primary underline">
                 تواصل معنا
               </Link>
               .
@@ -133,7 +133,7 @@ export default function About() {
             {ABOUT_GALLERY_IMAGES.map((src, index) => (
               <div
                 key={src}
-                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100 shadow-lg ring-1 ring-slate-200/80"
+                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100 shadow-sm ring-1 ring-slate-200/80"
               >
                 <Image
                   src={src}
