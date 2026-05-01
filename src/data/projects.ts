@@ -99,6 +99,8 @@ export interface ProjectRecord {
   simpleInfoCards?: Array<{ label: string; value: string }>;
   /** السعة الاستيعابية عند الحاجة لإبرازها في قسم مستقل */
   capacityText?: string;
+  /** فيديوهات مراحل العمل — مسارات تحت `public`؛ تُعرض صامتة افتراضيًا مع تحكم */
+  workPhaseVideos?: string[];
 }
 
 export const PROJECT_RECORDS: ProjectRecord[] = [
@@ -121,14 +123,10 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
     ],
     images: [
       "/Image/First Project/Display picture.png",
-      "/Image/First Project/picture.jpg",
-      "/Image/First Project/PHOTO-2026-02-12-11-27-50.jpg",
-      "/Image/First Project/PHOTO-2026-02-12-11-27-51 2.jpg",
-      "/Image/First Project/PHOTO-2026-02-12-11-27-51 3.jpg",
-      "/Image/First Project/PHOTO-2026-02-12-11-27-51.jpg",
-      "/Image/First Project/PHOTO-2026-02-12-11-27-52 2.jpg",
-      "/Image/First Project/PHOTO-2026-02-12-11-27-52 3.jpg",
-      "/Image/First Project/PHOTO-2026-02-12-11-27-52.jpg",
+      "/Image/First Project/Image (8).jpg",
+      "/Image/First Project/Image (9).jpg",
+      "/Image/First Project/Image (10).jpg",
+      "/Image/First Project/Image (11).jpg",
     ],
     extendedSheet: {
       referenceCode: "ARCH-1134",
@@ -154,8 +152,10 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/First Project/desing arach/Image (3).jpg",
       "/Image/First Project/desing arach/Image (4).jpg",
     ],
-    finalViewGallery: [
-      "/Image/First Project/last view/Image (3).jpg",
+    finalViewGallery: ["/Image/First Project/picture.jpg"],
+    workPhaseVideos: [
+      "/Image/First Project/MicrosoftTeams-video.mp4",
+      "/Image/First Project/MicrosoftTeams-video (1).mp4",
     ],
   },
 
@@ -178,12 +178,10 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
     ],
     images: [
       "/Image/Second Project/Display picture.jpg",
-      "/Image/Second Project/PHOTO-2026-02-12-12-05-47 2.jpg",
-      "/Image/Second Project/PHOTO-2026-02-12-12-05-47.jpg",
-      "/Image/Second Project/PHOTO-2026-04-18-21-42-18.jpg",
-      "/Image/Second Project/PHOTO-2026-04-18-21-42-25.jpg",
-      "/Image/Second Project/PHOTO-2026-04-18-21-42-32.jpg",
-      "/Image/Second Project/PHOTO-2026-04-18-21-42-54.jpg",
+      "/Image/Second Project/Image (9).jpg",
+      "/Image/Second Project/Image (10).jpg",
+      "/Image/Second Project/Image (11).jpg",
+      "/Image/Second Project/Image (12).jpg",
     ],
     extendedSheet: {
       referenceCode: "ARCH-1145",
@@ -205,6 +203,7 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/Second Project/design-arch/Screenshot 2026-04-19 224025.png",
       "/Image/Second Project/design-arch/Screenshot 2026-04-19 224128.png",
       "/Image/Second Project/design-arch/Screenshot 2026-04-19 224211.png",
+      "/Image/Second Project/design-arch/Screenshot 2026-04-19 224236.png",
     ],
     cardStatusBadge: "قيد التنفيذ",
     projectStatusSection: {

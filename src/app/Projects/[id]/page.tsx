@@ -47,6 +47,10 @@ export default function ProjectDetailPage({
     (item) => item.label && item.value
   );
   const finalViewImages = project.finalViewGallery?.filter(Boolean) ?? [];
+  const workPhaseVideos = project.workPhaseVideos?.filter(Boolean) ?? [];
+  /** تنسيق بصري للمشروعين 1 و 2 في صفحة التفاصيل */
+  const isProject1DetailTone = project.id === 1;
+  const isDetailBrandTone = project.id === 1 || project.id === 2;
 
   return (
     <>
@@ -54,12 +58,16 @@ export default function ProjectDetailPage({
 
       <article className="min-h-[50vh] bg-white pb-16 sm:pb-20">
         {/* Hero — صورة عريضة للمشروع */}
-        <div className="relative w-full bg-slate-900">
+        <div className="relative w-full bg-slate-900 px-2 pb-2 sm:px-4 sm:pb-3 lg:px-8 lg:pb-4">
           <div
-            className={`relative mx-auto w-full max-w-[1920px] ${
+            className={`relative mx-auto w-full max-w-[1920px] overflow-hidden rounded-b-2xl sm:rounded-b-3xl ${
               hasExtendedSheet
                 ? "h-[clamp(240px,48vw,380px)] sm:h-[clamp(280px,42vh,440px)] md:h-[clamp(300px,40vh,520px)]"
                 : "h-[clamp(200px,42vw,320px)] sm:h-[clamp(240px,38vh,400px)] md:h-[clamp(260px,36vh,480px)]"
+            } ${
+              isDetailBrandTone
+                ? "shadow-[0_26px_52px_-14px_rgba(49,46,129,0.33)] ring-1 ring-indigo-400/25"
+                : "shadow-[0_28px_60px_-18px_rgba(15,23,42,0.45)] ring-1 ring-white/10"
             }`}
           >
             <Image
@@ -67,7 +75,11 @@ export default function ProjectDetailPage({
               alt={project.title}
               fill
               priority
-              className="object-cover"
+              className={
+                isDetailBrandTone
+                  ? "object-cover brightness-[1.02] contrast-[1.045] saturate-[1.03]"
+                  : "object-cover"
+              }
               sizes="100vw"
             />
             <div
@@ -194,6 +206,7 @@ export default function ProjectDetailPage({
                   ? project.shortDescription
                   : undefined
               }
+              detailImageTone={isDetailBrandTone ? "brandSoft" : undefined}
             />
           ) : null}
 
@@ -339,17 +352,31 @@ export default function ProjectDetailPage({
             >
               {isImageFocusedLayout ? "معرض الصور الرئيسية" : "معرض الصور"}
             </h2>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+            <div
+              className={
+                isDetailBrandTone
+                  ? "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+                  : "grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
+              }
+            >
               {galleryImages.map((src, index) => (
                 <div
                   key={`${src}-${index}`}
-                  className="relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-sm ring-1 ring-black/5 transition hover:ring-indigo-200/80"
+                  className={
+                    isDetailBrandTone
+                      ? "group relative aspect-[4/3] overflow-hidden rounded-2xl border border-indigo-200/40 bg-gradient-to-b from-indigo-50/35 via-white to-slate-100/90 shadow-[0_14px_36px_-10px_rgba(49,46,129,0.16)] ring-1 ring-indigo-950/[0.08] transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-12px_rgba(49,46,129,0.2)] hover:ring-indigo-300/35"
+                      : "relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-sm ring-1 ring-black/5 transition hover:ring-indigo-200/80"
+                  }
                 >
                   <Image
                     src={src}
                     alt={`${project.title} — صورة ${index + 2} من المعرض`}
                     fill
-                    className="object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
+                    className={
+                      isDetailBrandTone
+                        ? "object-cover object-center transition duration-300 ease-out brightness-[1.02] contrast-[1.04] saturate-[1.03] group-hover:brightness-[1.03] group-hover:contrast-[1.045] group-hover:saturate-[1.035] group-hover:scale-[1.02]"
+                        : "object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
+                    }
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
@@ -361,6 +388,50 @@ export default function ProjectDetailPage({
               </p>
             )}
           </section>
+
+          {workPhaseVideos.length > 0 ? (
+            <section
+              className="mb-12 sm:mb-14"
+              aria-labelledby="work-videos-heading"
+            >
+              <h2
+                id="work-videos-heading"
+                className="mb-4 text-xl font-bold text-indigo-950 sm:text-2xl"
+              >
+                فيديوهات من مراحل العمل
+              </h2>
+              <p className="mb-5 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                التشغيل الافتراضي دون صوت؛ يمكنكم تشغيل الصوت يدويًا من أدوات التحكم عند
+                الحاجة.
+              </p>
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6">
+                {workPhaseVideos.map((src, index) => (
+                  <div
+                    key={`${src}-${index}`}
+                    className={
+                      isProject1DetailTone
+                        ? "overflow-hidden rounded-2xl border border-indigo-200/45 bg-gradient-to-b from-indigo-50/40 via-white to-slate-100/90 shadow-[0_16px_40px_-12px_rgba(49,46,129,0.18)] ring-1 ring-indigo-950/[0.09] transition duration-300 hover:shadow-[0_22px_48px_-14px_rgba(49,46,129,0.22)]"
+                        : "overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50 shadow-md ring-1 ring-black/[0.04]"
+                    }
+                  >
+                    <div className="relative aspect-video w-full bg-slate-950">
+                      <video
+                        className="absolute inset-0 h-full w-full object-cover brightness-[1.02] contrast-[1.03] saturate-[1.02]"
+                        controls
+                        muted
+                        playsInline
+                        preload="metadata"
+                        title={`${project.title} — فيديو مرحلة ${index + 1}`}
+                      >
+                        <source src={encodeURI(src)} type="video/mp4" />
+                        متصفحك لا يدعم تشغيل الفيديو.
+                      </video>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           {isImageFocusedLayout && project.designGallery && project.designGallery.length > 0 ? (
             <section className="mb-12 sm:mb-14" aria-labelledby="design-gallery-heading">
@@ -380,7 +451,7 @@ export default function ProjectDetailPage({
                       src={src}
                       alt={`${project.title} — مخطط ${index + 1}`}
                       fill
-                      className="bg-white p-2 object-contain transition-transform duration-500 ease-out hover:scale-[1.02]"
+                      className="bg-white p-2 object-contain transition-transform duration-500 ease-out brightness-[1.02] contrast-[1.02] hover:scale-[1.02] hover:brightness-[1.04]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
@@ -423,12 +494,22 @@ export default function ProjectDetailPage({
                 </p>
               )}
               {finalViewImages.length === 1 ? (
-                <div className="relative h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gray-100 shadow-lg ring-1 ring-black/[0.04] lg:h-[600px]">
+                <div
+                  className={
+                    isProject1DetailTone
+                      ? "relative h-[400px] w-full overflow-hidden rounded-3xl border border-indigo-200/35 bg-gradient-to-b from-slate-50 to-slate-100 shadow-[0_18px_44px_-14px_rgba(49,46,129,0.15)] ring-1 ring-indigo-950/[0.08] lg:h-[600px]"
+                      : "relative h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gray-100 shadow-lg ring-1 ring-black/[0.04] lg:h-[600px]"
+                  }
+                >
                   <Image
                     src={finalViewImages[0]}
                     alt={`${project.title} — الشكل النهائي بعد التنفيذ`}
                     fill
-                    className="object-contain object-center transition-transform duration-500 ease-out hover:scale-[1.01]"
+                    className={
+                      isProject1DetailTone
+                        ? "object-contain object-center transition-transform duration-500 ease-out brightness-[1.02] contrast-[1.03] saturate-[1.025] hover:scale-[1.01]"
+                        : "object-contain object-center transition-transform duration-500 ease-out hover:scale-[1.01]"
+                    }
                     sizes="100vw"
                   />
                 </div>
@@ -437,13 +518,21 @@ export default function ProjectDetailPage({
                   {finalViewImages.map((src, index) => (
                     <div
                       key={`${src}-${index}`}
-                      className="relative h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gray-100 shadow-lg ring-1 ring-black/[0.04] transition hover:ring-indigo-200/70 lg:h-[600px]"
+                      className={
+                        isProject1DetailTone
+                          ? "relative h-[400px] w-full overflow-hidden rounded-3xl border border-indigo-200/35 bg-gradient-to-b from-slate-50 to-slate-100 shadow-[0_18px_44px_-14px_rgba(49,46,129,0.15)] ring-1 ring-indigo-950/[0.08] transition hover:ring-indigo-300/50 lg:h-[600px]"
+                          : "relative h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gray-100 shadow-lg ring-1 ring-black/[0.04] transition hover:ring-indigo-200/70 lg:h-[600px]"
+                      }
                     >
                       <Image
                         src={src}
                         alt={`${project.title} — الشكل النهائي ${index + 1}`}
                         fill
-                        className="object-contain object-center transition-transform duration-500 ease-out hover:scale-[1.01]"
+                        className={
+                          isProject1DetailTone
+                            ? "object-contain object-center transition-transform duration-500 ease-out brightness-[1.02] contrast-[1.03] saturate-[1.025] hover:scale-[1.01]"
+                            : "object-contain object-center transition-transform duration-500 ease-out hover:scale-[1.01]"
+                        }
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     </div>

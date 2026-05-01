@@ -8,6 +8,8 @@ type Props = {
   projectTitle: string;
   /** يُعرض في بطاقة «الوصف المختصر» عند تفعيل `includeSummaryCard` */
   extendedSummaryText?: string;
+  /** تنعيم ألوان وظلال صور المخططات — مشروع محدد فقط */
+  detailImageTone?: "brandSoft";
 };
 
 function InfoCard({
@@ -51,6 +53,7 @@ export default function ProjectExtendedDetails({
   designGallery,
   projectTitle,
   extendedSummaryText,
+  detailImageTone,
 }: Props) {
   const showPlanBlock = Boolean(sheet.planType || sheet.documentDate);
   const showApprovals = Boolean(
@@ -297,13 +300,29 @@ export default function ProjectExtendedDetails({
               <ul className="relative grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
                 {designGallery.map((src, index) => (
                   <li key={`${src}-${index}`} className="min-w-0">
-                    <figure className="group relative h-full overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md shadow-slate-900/[0.06] ring-1 ring-black/[0.03] transition duration-300 ease-out hover:-translate-y-1 hover:border-indigo-200/80 hover:shadow-xl hover:shadow-indigo-900/10">
-                      <div className="relative aspect-[4/3] w-full bg-gradient-to-b from-slate-50 to-white">
+                    <figure
+                      className={
+                        detailImageTone === "brandSoft"
+                          ? "group relative h-full overflow-hidden rounded-2xl border border-indigo-200/45 bg-white shadow-md shadow-indigo-950/[0.09] ring-1 ring-indigo-950/[0.06] transition duration-300 ease-out hover:-translate-y-1 hover:border-indigo-300/70 hover:shadow-lg hover:shadow-indigo-950/15"
+                          : "group relative h-full overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md shadow-slate-900/[0.06] ring-1 ring-black/[0.03] transition duration-300 ease-out hover:-translate-y-1 hover:border-indigo-200/80 hover:shadow-xl hover:shadow-indigo-900/10"
+                      }
+                    >
+                      <div
+                        className={
+                          detailImageTone === "brandSoft"
+                            ? "relative aspect-[4/3] w-full bg-gradient-to-b from-indigo-50/40 via-white to-amber-50/25"
+                            : "relative aspect-[4/3] w-full bg-gradient-to-b from-slate-50 to-white"
+                        }
+                      >
                         <Image
                           src={src}
                           alt={`${projectTitle} — مخطط أو تصميم ${index + 1}`}
                           fill
-                          className="object-contain p-3 transition duration-500 ease-out group-hover:scale-[1.02] sm:p-4"
+                          className={
+                            detailImageTone === "brandSoft"
+                              ? "object-contain object-center p-3 transition duration-500 ease-out brightness-[1.02] contrast-[1.04] saturate-[1.03] group-hover:scale-[1.015] group-hover:brightness-[1.03] group-hover:contrast-[1.045] sm:p-4"
+                              : "object-contain object-center p-3 transition duration-500 ease-out group-hover:scale-[1.02] sm:p-4"
+                          }
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       </div>
