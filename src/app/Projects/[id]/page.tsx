@@ -51,6 +51,10 @@ export default function ProjectDetailPage({
   /** تنسيق بصري للمشروعين 1 و 2 في صفحة التفاصيل */
   const isProject1DetailTone = project.id === 1;
   const isDetailBrandTone = project.id === 1 || project.id === 2;
+  const gallerySpotlight = project.galleryPresentation === "spotlight";
+  const gallerySectionHeading =
+    project.gallerySectionTitle ??
+    (isImageFocusedLayout ? "معرض الصور الرئيسية" : "معرض الصور");
 
   return (
     <>
@@ -63,7 +67,9 @@ export default function ProjectDetailPage({
             className={`relative mx-auto w-full max-w-[1920px] overflow-hidden rounded-b-2xl sm:rounded-b-3xl ${
               hasExtendedSheet
                 ? "h-[clamp(240px,48vw,380px)] sm:h-[clamp(280px,42vh,440px)] md:h-[clamp(300px,40vh,520px)]"
-                : "h-[clamp(200px,42vw,320px)] sm:h-[clamp(240px,38vh,400px)] md:h-[clamp(260px,36vh,480px)]"
+                : gallerySpotlight
+                  ? "h-[clamp(260px,56vw,420px)] sm:h-[clamp(300px,48vh,480px)] md:h-[clamp(320px,46vh,580px)]"
+                  : "h-[clamp(200px,42vw,320px)] sm:h-[clamp(240px,38vh,400px)] md:h-[clamp(260px,36vh,480px)]"
             } ${
               isDetailBrandTone
                 ? "shadow-[0_26px_52px_-14px_rgba(49,46,129,0.33)] ring-1 ring-indigo-400/25"
@@ -195,7 +201,62 @@ export default function ProjectDetailPage({
               </>
             )}
           </header>
+        </div>
 
+        {gallerySpotlight && galleryImages.length > 0 ? (
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <section
+              className="mb-12 sm:mb-14 lg:mb-16"
+              aria-labelledby="project-gallery-spotlight-heading"
+            >
+              <div className="mb-6 border-b border-slate-200/90 pb-5 sm:mb-8 sm:pb-6">
+                <h2
+                  id="project-gallery-spotlight-heading"
+                  className="text-2xl font-extrabold tracking-tight text-indigo-950 sm:text-3xl"
+                >
+                  {gallerySectionHeading}
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-6 md:gap-6">
+                {galleryImages.map((src, index) => {
+                  const isLead = index === 0;
+                  const restCount = galleryImages.length - 1;
+                  const isLastOdd =
+                    !isLead &&
+                    index === galleryImages.length - 1 &&
+                    restCount > 0 &&
+                    restCount % 2 === 1;
+                  return (
+                    <div
+                      key={`${src}-${index}`}
+                      className={`group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100 shadow-[0_20px_50px_-18px_rgba(15,23,42,0.35)] ring-1 ring-black/[0.06] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_60px_-20px_rgba(49,46,129,0.22)] hover:ring-indigo-200/60 ${
+                        isLead
+                          ? "md:col-span-6 min-h-[240px] sm:min-h-[300px] md:min-h-[min(52vh,440px)] lg:min-h-[min(56vh,520px)]"
+                          : isLastOdd
+                            ? "md:col-span-6 min-h-[220px] sm:min-h-[260px] md:min-h-[300px]"
+                            : "md:col-span-3 min-h-[200px] sm:min-h-[240px] md:min-h-[280px]"
+                      }`}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${project.title} — صورة ${index + 2}`}
+                        fill
+                        className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+                        sizes={
+                          isLead || isLastOdd
+                            ? "(max-width: 768px) 100vw, 100vw"
+                            : "(max-width: 768px) 100vw, 50vw"
+                        }
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
+        ) : null}
+
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-5xl lg:px-8">
           {project.extendedSheet && !isImageFocusedLayout ? (
             <ProjectExtendedDetails
               sheet={project.extendedSheet}
@@ -345,49 +406,51 @@ export default function ProjectDetailPage({
             </ul>
           </section>
 
-          <section className="mb-12 sm:mb-14" aria-labelledby="gallery-heading">
-            <h2
-              id="gallery-heading"
-              className="mb-4 text-xl font-bold text-indigo-950 sm:text-2xl"
-            >
-              {isImageFocusedLayout ? "معرض الصور الرئيسية" : "معرض الصور"}
-            </h2>
-            <div
-              className={
-                isDetailBrandTone
-                  ? "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
-                  : "grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
-              }
-            >
-              {galleryImages.map((src, index) => (
-                <div
-                  key={`${src}-${index}`}
-                  className={
-                    isDetailBrandTone
-                      ? "group relative aspect-[4/3] overflow-hidden rounded-2xl border border-indigo-200/40 bg-gradient-to-b from-indigo-50/35 via-white to-slate-100/90 shadow-[0_14px_36px_-10px_rgba(49,46,129,0.16)] ring-1 ring-indigo-950/[0.08] transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-12px_rgba(49,46,129,0.2)] hover:ring-indigo-300/35"
-                      : "relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-sm ring-1 ring-black/5 transition hover:ring-indigo-200/80"
-                  }
-                >
-                  <Image
-                    src={src}
-                    alt={`${project.title} — صورة ${index + 2} من المعرض`}
-                    fill
+          {!gallerySpotlight ? (
+            <section className="mb-12 sm:mb-14" aria-labelledby="gallery-heading">
+              <h2
+                id="gallery-heading"
+                className="mb-4 text-xl font-bold text-indigo-950 sm:text-2xl"
+              >
+                {gallerySectionHeading}
+              </h2>
+              <div
+                className={
+                  isDetailBrandTone
+                    ? "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+                    : "grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
+                }
+              >
+                {galleryImages.map((src, index) => (
+                  <div
+                    key={`${src}-${index}`}
                     className={
                       isDetailBrandTone
-                        ? "object-cover object-center transition duration-300 ease-out brightness-[1.02] contrast-[1.04] saturate-[1.03] group-hover:brightness-[1.03] group-hover:contrast-[1.045] group-hover:saturate-[1.035] group-hover:scale-[1.02]"
-                        : "object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
+                        ? "group relative aspect-[4/3] overflow-hidden rounded-2xl border border-indigo-200/40 bg-gradient-to-b from-indigo-50/35 via-white to-slate-100/90 shadow-[0_14px_36px_-10px_rgba(49,46,129,0.16)] ring-1 ring-indigo-950/[0.08] transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-12px_rgba(49,46,129,0.2)] hover:ring-indigo-300/35"
+                        : "relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-sm ring-1 ring-black/5 transition hover:ring-indigo-200/80"
                     }
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-              ))}
-            </div>
-            {galleryImages.length === 0 && (
-              <p className="rounded-xl border border-dashed border-slate-200 bg-slate-50/80 p-6 text-center text-slate-500">
-                لا توجد صور إضافية لهذا المشروع حالياً.
-              </p>
-            )}
-          </section>
+                  >
+                    <Image
+                      src={src}
+                      alt={`${project.title} — صورة ${index + 2} من المعرض`}
+                      fill
+                      className={
+                        isDetailBrandTone
+                          ? "object-cover object-center transition duration-300 ease-out brightness-[1.02] contrast-[1.04] saturate-[1.03] group-hover:brightness-[1.03] group-hover:contrast-[1.045] group-hover:saturate-[1.035] group-hover:scale-[1.02]"
+                          : "object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
+                      }
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                ))}
+              </div>
+              {galleryImages.length === 0 && (
+                <p className="rounded-xl border border-dashed border-slate-200 bg-slate-50/80 p-6 text-center text-slate-500">
+                  لا توجد صور إضافية لهذا المشروع حالياً.
+                </p>
+              )}
+            </section>
+          ) : null}
 
           {workPhaseVideos.length > 0 ? (
             <section

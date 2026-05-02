@@ -1,8 +1,8 @@
 /**
  * مشاريع شركة بنيان — ملف البيانات للواجهة
  *
- * القائمة أدناه تحتوي فقط على المشاريع المرتبطة بصور حقيقية تحت
- * `public/Image/First Project` … `sixth project`.
+ * القائمة أدناه تحتوي على المشاريع المرتبطة بصور تحت
+ * `public/Image/First Project` … `Seventh Project`.
  *
  * تسمية الحقول البرمجية ثابتة؛ التعليقات العربية توضّح معنى كل حقل في الواجهة.
  */
@@ -101,6 +101,10 @@ export interface ProjectRecord {
   capacityText?: string;
   /** فيديوهات مراحل العمل — مسارات تحت `public`؛ تُعرض صامتة افتراضيًا مع تحكم */
   workPhaseVideos?: string[];
+  /** عنوان قسم معرض الصور في صفحة التفاصيل */
+  gallerySectionTitle?: string;
+  /** معرض بصور أكبر وشبكة أوضح؛ يُعرض مبكرًا قبل النبذة عند التفعيل */
+  galleryPresentation?: "default" | "spotlight";
 }
 
 export const PROJECT_RECORDS: ProjectRecord[] = [
@@ -430,6 +434,34 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
     ],
   },
 
+  {
+    id: 7,
+    title: "مشروع هناجر مع عمارة",
+    location: "عدن – اليمن",
+    type: "هناجر + مبنى متعدد الاستخدام",
+    shortDescription:
+      "تنفيذ مشروع يجمع بين الهناجر والمباني متعددة الاستخدام، مع مراعاة أعلى معايير الجودة في التنفيذ والتخطيط.",
+    description:
+      "يعد هذا المشروع من المشاريع التي تعكس خبرة شركة بنيان في تنفيذ المشاريع المتنوعة، حيث يجمع بين الهياكل المعدنية (الهناجر) والمباني الخرسانية في موقع واحد، مع تنفيذ متكامل يراعي الجودة والدقة في جميع مراحل العمل.",
+    completedWorks: [
+      "تنفيذ الهيكل المعدني للهناجر",
+      "أعمال الخرسانة والبناء",
+      "التشطيبات الأساسية",
+      "تجهيز الموقع والبنية التحتية",
+    ],
+    images: [
+      "/Image/Seventh Project/Dispaly Picutre .jpg",
+      "/Image/Seventh Project/Image (9).jpg",
+      "/Image/Seventh Project/Image (10).jpg",
+      "/Image/Seventh Project/Image (11).jpg",
+      "/Image/Seventh Project/Image (12).jpg",
+      "/Image/Seventh Project/Image (13).jpg",
+      "/Image/Seventh Project/Image (14).jpg",
+      "/Image/Seventh Project/Image (15).jpg",
+    ],
+    gallerySectionTitle: "لقطات من المشروع",
+    galleryPresentation: "spotlight",
+  },
 ];
 
 export function getProjectById(id: number) {
