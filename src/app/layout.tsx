@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
+import Script from "next/script";
 import FloatingWhatsAppButton from "@/components/common/FloatingWhatsAppButton";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = "G-RD6MW08LDM";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -42,6 +45,18 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <body className={`${cairo.className} antialiased text-gray-900 bg-white`}>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         {children}
         <FloatingWhatsAppButton />
       </body>
