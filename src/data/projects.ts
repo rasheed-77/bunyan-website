@@ -240,6 +240,11 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/Thired Project/PHOTO-2026-02-12-12-08-08 3.jpg",
       "/Image/Thired Project/PHOTO-2026-02-12-12-08-08.jpg",
       "/Image/Thired Project/PHOTO-2026-02-12-12-08-09.jpg",
+      "/Image/Thired Project/Image (13).jpg",
+      "/Image/Thired Project/Image (14).jpg",
+      "/Image/Thired Project/Image (15).jpg",
+      "/Image/Thired Project/Image (17).jpg",
+      "/Image/Thired Project/Image (18).jpg",
     ],
     extendedSheet: {
       referenceCode: "ARCH-1137",
