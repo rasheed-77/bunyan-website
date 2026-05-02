@@ -10,22 +10,22 @@ export default function Team() {
         قيمنا ليست شعارات فقط — بل التزام يومي يوجّه قراراتنا في الموقع، وفي
         التعامل مع العملاء والموردين والمجتمع.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        <div>
+      <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="ui-card-hover rounded-2xl border border-slate-200/80 bg-light p-6 shadow-sm md:p-8">
           <h3 className="text-2xl font-bold text-dark mb-2">النزاهة</h3>
           <p className="text-slate-600 leading-relaxed">
             الشفافية في العروض والعقود والمستخلصات، وبناء الثقة من خلال الوفاء
             بالتعهدات.
           </p>
         </div>
-        <div>
+        <div className="ui-card-hover rounded-2xl border border-slate-200/80 bg-light p-6 shadow-sm md:p-8">
           <h3 className="text-2xl font-bold text-dark mb-2">الابتكار</h3>
           <p className="text-slate-600 leading-relaxed">
             اعتماد حلول هندسية وإدارية تُحسّن الكفاءة وتقلل الهدر دون المساس
             بالجودة.
           </p>
         </div>
-        <div>
+        <div className="ui-card-hover rounded-2xl border border-slate-200/80 bg-light p-6 shadow-sm md:p-8">
           <h3 className="text-2xl font-bold text-dark mb-2">التميّز</h3>
           <p className="text-slate-600 leading-relaxed">
             السعي لأن يكون كل مشروع مرجعاً في التنفيذ والتسليم، وفق أعلى معايير

@@ -53,15 +53,17 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="bg-white p-8 rounded-xl shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-md hover:shadow-primary/15 hover:border-primary/60"
+              className="group/svc ui-card-hover rounded-xl border border-slate-200 bg-white p-8 shadow-sm hover:border-primary/60"
             >
-              <Image
-                src="/Image/Message Picture.jpg"
-                alt=""
-                width={500}
-                height={300}
-                className="rounded-lg mb-4 object-cover w-full h-48"
-              />
+              <div className="relative mb-4 h-48 w-full overflow-hidden rounded-lg">
+                <Image
+                  src="/Image/Message Picture.jpg"
+                  alt=""
+                  width={500}
+                  height={300}
+                  className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover/svc:scale-[1.02]"
+                />
+              </div>
               <h2 className="text-2xl font-bold text-dark mb-2">
                 {service.title}
               </h2>
@@ -70,7 +72,7 @@ export default function Services() {
               </p>
               <Link
                 href="/Contact_us"
-                className="inline-block text-center w-full text-lg font-bold rounded-lg py-3 px-4 text-dark bg-primary hover:bg-[#c8a574] transition duration-300"
+                className="ui-btn-primary-motion inline-block w-full rounded-lg bg-primary px-4 py-3 text-center text-lg font-bold text-dark transition-colors duration-300 ease-in-out hover:bg-[#c8a574]"
               >
                 اطلب استشارة
               </Link>
@@ -116,9 +118,9 @@ export default function Services() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-sm text-center border border-slate-200 transition-all duration-300 hover:shadow-md hover:shadow-primary/15 hover:border-primary/60"
+                className="group/why ui-card-hover rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm hover:border-primary/60"
               >
-                <item.icon className="text-4xl text-primary mb-4 mx-auto" />
+                <item.icon className="mx-auto mb-4 text-4xl text-primary transition-transform duration-300 ease-in-out group-hover/why:scale-105" />
                 <h3 className="text-xl font-bold text-dark mb-2">
                   {item.title}
                 </h3>
@@ -184,7 +186,7 @@ export default function Services() {
           <div className="text-center">
             <Link
               href="/Contact_us"
-              className="inline-block text-xl font-bold rounded-lg py-3 px-8 text-dark bg-primary hover:bg-[#c8a574] transition duration-300"
+              className="ui-btn-primary-motion inline-block rounded-lg bg-primary px-8 py-3 text-xl font-bold text-dark transition-colors duration-300 ease-in-out hover:bg-[#c8a574]"
             >
               تواصل معنا الآن
             </Link>

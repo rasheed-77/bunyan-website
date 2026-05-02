@@ -19,7 +19,7 @@ const ProjectCard: React.FC<{ project: ProjectRecord }> = ({ project }) => {
     <motion.article
       className="group ui-card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm shadow-slate-900/5 hover:border-primary/60 hover:shadow-primary/15"
       whileHover={{ y: -3 }}
-      transition={{ duration: 0.22 }}
+      transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <Link
         href={`/Projects/${project.id}`}
@@ -74,7 +74,7 @@ const ProjectCard: React.FC<{ project: ProjectRecord }> = ({ project }) => {
 
         <Link
           href={`/Projects/${project.id}`}
-          className="mt-5 inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-bold text-dark shadow-sm transition hover:bg-[#c8a574] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:text-base"
+          className="ui-btn-primary-motion mt-5 inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-bold text-dark shadow-sm transition-colors duration-300 ease-in-out hover:bg-[#c8a574] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:text-base"
         >
           عرض التفاصيل
         </Link>

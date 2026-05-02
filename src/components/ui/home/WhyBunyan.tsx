@@ -46,8 +46,8 @@ export default function WhyBunyan() {
             <motion.div
               key={item.title}
               className="ui-card-hover flex flex-col items-center rounded-2xl border border-slate-200 bg-light p-6 text-center text-dark shadow-sm hover:border-primary/60"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25 }}
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
             >
               <div className="text-4xl mb-3" aria-hidden>
                 {item.icon}

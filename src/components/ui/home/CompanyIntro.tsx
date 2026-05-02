@@ -31,12 +31,12 @@ export default function CompanyIntro() {
               للموردين والعقود والمستخلصات.
             </p>
           </div>
-          <div className="relative w-full aspect-[4/3] max-h-[420px] mx-auto rounded-2xl overflow-hidden shadow-md ring-1 ring-slate-200/80 order-1 lg:order-2">
+          <div className="group/img relative w-full aspect-[4/3] max-h-[420px] mx-auto overflow-hidden rounded-2xl shadow-md ring-1 ring-slate-200/80 transition-shadow duration-300 ease-in-out hover:shadow-lg order-1 lg:order-2">
             <Image
               src={ABOUT_IMAGE}
               alt="أعمال بنيان — نبذة عن الشركة"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 ease-in-out group-hover/img:scale-[1.02]"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>

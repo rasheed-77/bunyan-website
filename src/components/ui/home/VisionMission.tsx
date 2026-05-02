@@ -15,12 +15,12 @@ export default function VisionMission() {
           صورة من بيئة العمل والتنفيذ تعكس التزامنا بجودة الميدان والمقاولات.
         </p>
 
-        <div className="relative w-full max-w-4xl mx-auto h-44 sm:h-52 md:h-60 rounded-2xl overflow-hidden shadow-md mb-12 ring-1 ring-slate-200/80">
+        <div className="group/banner relative mx-auto mb-12 h-44 w-full max-w-4xl overflow-hidden rounded-2xl shadow-md ring-1 ring-slate-200/80 transition-shadow duration-300 ease-in-out hover:shadow-lg sm:h-52 md:h-60">
           <Image
             src={BANNER_IMAGE}
             alt="مشهد مرتبط بالتنفيذ والمقاولات — بنيان"
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-500 ease-in-out group-hover/banner:scale-[1.02]"
             sizes="(max-width: 896px) 100vw, 896px"
           />
           <div
@@ -29,8 +29,8 @@ export default function VisionMission() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-light rounded-2xl p-8 md:p-10 shadow-sm border border-slate-200/80 border-t-4 border-t-primary">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="ui-card-hover rounded-2xl border border-slate-200/80 border-t-4 border-t-primary bg-light p-8 shadow-sm md:p-10">
             <h3 className="text-2xl font-bold text-dark mb-4">رؤيتنا</h3>
             <p className="text-slate-700 leading-relaxed text-base md:text-lg">
               أن نكون من الشركات الرائدة في التطوير العقاري والمقاولات في
@@ -38,7 +38,7 @@ export default function VisionMission() {
               الطويل.
             </p>
           </div>
-          <div className="bg-light rounded-2xl p-8 md:p-10 shadow-sm border border-slate-200/80 border-t-4 border-t-primary">
+          <div className="ui-card-hover rounded-2xl border border-slate-200/80 border-t-4 border-t-primary bg-light p-8 shadow-sm md:p-10">
             <h3 className="text-2xl font-bold text-dark mb-4">رسالتنا</h3>
             <p className="text-slate-700 leading-relaxed text-base md:text-lg">
               تنفيذ مشاريع تلتزم بالمواصفات والسلامة والبيئة، مع شفافية في

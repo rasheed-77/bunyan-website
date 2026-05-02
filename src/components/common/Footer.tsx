@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="mb-10 flex flex-col gap-4 border-b border-primary/35 pb-10 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/"
-            className="flex items-center gap-3 transition-opacity hover:opacity-95"
+            className="flex items-center gap-3 transition-opacity duration-300 ease-in-out hover:opacity-95"
           >
             <Image
               src="/Image/Image.png"
@@ -44,7 +44,7 @@ const Footer = () => {
             href={CONTACT_WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-dark shadow-md transition-all duration-300 hover:bg-[#c8a574] sm:w-auto"
+            className="ui-btn-primary-motion inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-dark shadow-md hover:bg-[#c8a574] sm:w-auto"
           >
             <FontAwesomeIcon icon={faWhatsapp} className="h-5 w-5" />
             تواصل سريع عبر واتساب
@@ -62,14 +62,14 @@ const Footer = () => {
                 href={CONTACT_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary transition duration-300 hover:text-white"
+                className="text-primary transition-all duration-300 ease-in-out hover:scale-110 hover:text-white"
                 aria-label="واتساب بنيان"
               >
                 <FontAwesomeIcon icon={faWhatsapp} className="h-6 w-6" />
               </a>
               <a
                 href={CONTACT_MAILTO}
-                className="text-primary transition duration-300 hover:text-white"
+                className="text-primary transition-all duration-300 ease-in-out hover:scale-110 hover:text-white"
                 aria-label={`إرسال بريد إلى ${CONTACT_EMAIL}`}
               >
                 <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5" />
@@ -87,10 +87,7 @@ const Footer = () => {
                 { href: "/Contact_us", label: "تواصل معنا" },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                  className="text-slate-200 transition duration-300 hover:text-primary"
-                  >
+                  <Link href={item.href} className="ui-footer-link">
                     {item.label}
                   </Link>
                 </li>
@@ -135,7 +132,7 @@ const Footer = () => {
                   />
                   <a
                     href={`tel:${p.tel}`}
-                    className="text-slate-200 transition hover:text-primary"
+                    className="ui-footer-link"
                     dir="ltr"
                   >
                     {p.label}
@@ -149,7 +146,7 @@ const Footer = () => {
                 />
                 <a
                   href={CONTACT_MAILTO}
-                  className="text-slate-200 hover:text-primary transition break-all"
+                  className="ui-footer-link break-all"
                   dir="ltr"
                 >
                   {CONTACT_EMAIL}

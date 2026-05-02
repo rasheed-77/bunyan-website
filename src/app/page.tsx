@@ -1,3 +1,4 @@
+import RevealOnScroll from "@/components/common/RevealOnScroll";
 import Header from "@/components/ui/home/Header";
 import CompanyIntro from "@/components/ui/home/CompanyIntro";
 import IntroVideo from "@/components/ui/home/IntroVideo";
@@ -12,14 +13,30 @@ export default function Home() {
   return (
     <>
       <Header />
-      <CompanyIntro />
-      <IntroVideo />
-      <VisionMission />
-      <ServicesPreview />
-      <FeaturedProjects />
-      <WhyBunyan />
-      <ContactCTA />
-      <Footer />
+      <RevealOnScroll>
+        <CompanyIntro />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <IntroVideo />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <VisionMission />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <ServicesPreview />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <FeaturedProjects />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <WhyBunyan />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <ContactCTA />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <Footer />
+      </RevealOnScroll>
     </>
   );
 }

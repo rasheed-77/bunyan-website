@@ -82,7 +82,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="rounded-md border-b border-slate-50 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-all duration-200 ease-in-out hover:bg-primary/15 hover:text-dark lg:border-0 lg:py-2 lg:text-center"
+                  className="relative rounded-md border-b border-slate-50 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors duration-300 ease-in-out hover:bg-primary/15 hover:text-dark max-lg:block lg:border-0 lg:inline-block lg:bg-transparent lg:py-2 lg:text-center lg:after:pointer-events-none lg:after:absolute lg:after:bottom-1 lg:after:start-2 lg:after:end-2 lg:after:h-0.5 lg:after:rounded-full lg:after:bg-[#D6B588] lg:after:opacity-0 lg:after:transition-opacity lg:after:duration-300 lg:hover:bg-transparent lg:hover:text-dark lg:hover:after:opacity-100"
                 >
                   {link.label}
                 </Link>

@@ -45,13 +45,13 @@ export default function Header() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto sm:mx-auto">
                 <Link
                   href="/Projects"
-                  className="inline-flex items-center justify-center rounded-xl bg-primary px-9 py-3.5 text-base font-bold text-dark shadow-md shadow-black/20 transition hover:bg-[#c8a574] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary min-h-[3rem]"
+                  className="ui-btn-primary-motion inline-flex min-h-[3rem] items-center justify-center rounded-xl bg-primary px-9 py-3.5 text-base font-bold text-dark shadow-md shadow-black/20 transition-colors duration-300 ease-in-out hover:bg-[#c8a574] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   مشاريعنا
                 </Link>
                 <Link
                   href="/Contact_us"
-                  className="inline-flex items-center justify-center rounded-xl border-2 border-white/95 bg-white/10 px-9 py-3.5 text-base font-bold text-white backdrop-blur-md transition hover:bg-white/20 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white min-h-[3rem]"
+                  className="ui-btn-primary-motion inline-flex min-h-[3rem] items-center justify-center rounded-xl border-2 border-white/95 bg-white/10 px-9 py-3.5 text-base font-bold text-white backdrop-blur-md transition-colors duration-300 ease-in-out hover:bg-white/20 hover:shadow-lg hover:shadow-black/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   تواصل معنا
                 </Link>

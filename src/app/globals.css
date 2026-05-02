@@ -30,10 +30,73 @@
   }
 
   .ui-card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-primary/20;
+    @apply transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md hover:shadow-primary/20;
   }
 
+  /** تكبير خفيف جداً للصور داخل الكرت عند hover */
   .ui-image-hover {
-    @apply transition-transform duration-500 ease-out group-hover:scale-[1.03];
+    @apply transition-transform duration-500 ease-in-out group-hover:scale-[1.02];
+  }
+
+  /** روابط التذييل — انتقال ناعم */
+  .ui-footer-link {
+    @apply text-slate-200 transition-colors duration-300 ease-in-out hover:text-primary;
+    @apply underline-offset-4 hover:underline decoration-primary/60;
+  }
+
+  /** أزرار أساسية — scale وظل خفيف موحّد */
+  .ui-btn-primary-motion {
+    @apply transition-all duration-300 ease-in-out;
+    @apply hover:scale-[1.02] hover:shadow-md active:scale-[0.99];
+  }
+}
+
+/* سلايدر المشاريع — زر واحد للانتقال إلى المشروع التالي */
+.featured-projects-next-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  color: #d6b588;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(214, 181, 136, 0.5);
+  box-shadow: 0 4px 14px rgba(31, 41, 55, 0.12);
+  cursor: pointer;
+}
+
+.featured-projects-next-btn:hover {
+  color: #b89560;
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(184, 149, 96, 0.55);
+  box-shadow: 0 6px 18px rgba(31, 41, 55, 0.16);
+}
+
+.featured-projects-next-btn:active .featured-projects-next-btn__icon {
+  animation: none;
+  transform: scale(0.92);
+}
+
+.featured-projects-next-btn__icon {
+  display: inline-flex;
+  animation: featured-projects-next-nudge 2.4s ease-in-out infinite;
+}
+
+@keyframes featured-projects-next-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+}
+
+@media (min-width: 640px) {
+  .featured-projects-next-btn {
+    width: 3rem;
+    height: 3rem;
   }
 }

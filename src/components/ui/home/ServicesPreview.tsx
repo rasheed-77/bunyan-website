@@ -54,7 +54,7 @@ export default function ServicesPreview() {
           </div>
           <Link
             href="/Services"
-            className="inline-flex justify-center items-center shrink-0 rounded-xl bg-primary text-dark font-bold px-6 py-3 hover:bg-[#c8a574] transition shadow-sm"
+            className="ui-btn-primary-motion inline-flex shrink-0 items-center justify-center rounded-xl bg-primary px-6 py-3 font-bold text-dark shadow-sm hover:bg-[#c8a574]"
           >
             جميع الخدمات
           </Link>
@@ -63,9 +63,9 @@ export default function ServicesPreview() {
           {items.map((item) => (
             <div
               key={item.title}
-              className="ui-card-hover rounded-2xl border border-slate-200 bg-white p-6 md:p-8 hover:border-primary/60"
+              className="group/service ui-card-hover rounded-2xl border border-slate-200 bg-white p-6 md:p-8 hover:border-primary/60"
             >
-              <item.icon className="text-3xl text-primary mb-4" />
+              <item.icon className="mb-4 text-3xl text-primary transition-transform duration-300 ease-in-out group-hover/service:scale-105" />
               <h3 className="text-xl font-bold text-dark mb-2">
                 {item.title}
               </h3>

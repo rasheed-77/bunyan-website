@@ -36,12 +36,12 @@ export default function About() {
                 ونبني مع شركائنا علاقات طويلة الأمد مبنية على الثقة والشفافية.
               </p>
             </div>
-            <div className="relative w-full aspect-[4/3] max-h-[380px] rounded-2xl overflow-hidden shadow-md ring-1 ring-slate-200/80">
+            <div className="group/img relative aspect-[4/3] max-h-[380px] w-full overflow-hidden rounded-2xl shadow-md ring-1 ring-slate-200/80 transition-shadow duration-300 ease-in-out hover:shadow-lg">
               <Image
                 src={ABOUT_HERO_IMAGE}
                 alt="من نحن — بنيان للعقارات والمقاولات العامة"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-in-out group-hover/img:scale-[1.02]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
@@ -67,12 +67,12 @@ export default function About() {
                 لأن سمعتنا تُبنى مشروعاً بعد مشروع.
               </p>
             </div>
-            <div className="relative w-full h-64 sm:h-80 lg:order-2 rounded-2xl overflow-hidden shadow-sm ring-1 ring-slate-200/80">
+            <div className="group/img relative h-64 w-full overflow-hidden rounded-2xl shadow-sm ring-1 ring-slate-200/80 transition-shadow duration-300 ease-in-out hover:shadow-md sm:h-80 lg:order-2">
               <Image
                 src={ABOUT_STORY_IMAGE}
                 alt="قصة شركة بنيان"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-in-out group-hover/img:scale-[1.02]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -81,12 +81,12 @@ export default function About() {
 
         <section className="mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative w-full h-64 sm:h-80 lg:order-1 rounded-2xl overflow-hidden shadow-sm ring-1 ring-slate-200/80">
+            <div className="group/img relative h-64 w-full overflow-hidden rounded-2xl shadow-sm ring-1 ring-slate-200/80 transition-shadow duration-300 ease-in-out hover:shadow-md sm:h-80 lg:order-1">
               <Image
                 src={ABOUT_COMMITMENT_IMAGE}
                 alt="رسالة شركة بنيان"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-in-out group-hover/img:scale-[1.02]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -120,7 +120,10 @@ export default function About() {
             </p>
             <p>
               للاستفسارات الإعلامية أو الشراكات، يرجى التواصل عبر صفحة{" "}
-              <Link href="/Contact_us" className="font-bold text-primary underline">
+              <Link
+                href="/Contact_us"
+                className="font-bold text-primary underline decoration-primary/50 underline-offset-2 transition-colors duration-300 ease-in-out hover:text-[#b89560]"
+              >
                 تواصل معنا
               </Link>
               .
@@ -133,13 +136,13 @@ export default function About() {
             {ABOUT_GALLERY_IMAGES.map((src, index) => (
               <div
                 key={src}
-                className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100 shadow-sm ring-1 ring-slate-200/80"
+                className="group/gal relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100 shadow-sm ring-1 ring-slate-200/80 transition-shadow duration-300 ease-in-out hover:shadow-md"
               >
                 <Image
                   src={src}
                   alt={`من أعمال بنيان — صورة واقعية ${index + 4}`}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 ease-in-out group-hover/gal:scale-[1.02]"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
