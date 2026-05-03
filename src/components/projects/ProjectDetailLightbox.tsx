@@ -61,10 +61,10 @@ function LightboxOverlay({
             e.stopPropagation();
             onClose();
           }}
-          className="absolute end-3 top-3 z-20 flex h-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-sm transition hover:bg-white/20 sm:end-4 sm:top-4"
+          className="fixed right-3 top-3 z-[250] flex h-12 w-12 min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-black/50 text-[#D6B588] shadow-lg ring-1 ring-white/15 transition-colors duration-200 ease-out hover:bg-[#D6B588] hover:text-[#1F1F1F] sm:right-4 sm:top-4"
           aria-label="إغلاق"
         >
-          <FaTimes className="h-5 w-5" />
+          <FaTimes className="h-5 w-5 shrink-0" />
         </button>
 
         {multi ? (
