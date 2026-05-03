@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
 import type { ProjectExtendedSheet } from "@/data/projects";
+import {
+  ProjectDetailLightboxImage,
+  type LightboxSlide,
+} from "@/components/projects/ProjectDetailLightbox";
 
 type Props = {
   sheet: ProjectExtendedSheet;
@@ -59,6 +62,11 @@ export default function ProjectExtendedDetails({
   const showApprovals = Boolean(
     sheet.officialApprovals && sheet.officialApprovals.length > 0
   );
+  const designSlides: LightboxSlide[] =
+    designGallery?.map((src, index) => ({
+      src,
+      alt: `${projectTitle} — مخطط أو تصميم ${index + 1}`,
+    })) ?? [];
 
   return (
     <>
@@ -314,9 +322,11 @@ export default function ProjectExtendedDetails({
                             : "relative aspect-[4/3] w-full bg-gradient-to-b from-slate-50 to-white"
                         }
                       >
-                        <Image
+                        <ProjectDetailLightboxImage
                           src={src}
                           alt={`${projectTitle} — مخطط أو تصميم ${index + 1}`}
+                          slides={designSlides}
+                          slideIndex={index}
                           fill
                           className={
                             detailImageTone === "brandSoft"
@@ -324,6 +334,7 @@ export default function ProjectExtendedDetails({
                               : "object-contain object-center p-3 transition duration-500 ease-out group-hover:scale-[1.02] sm:p-4"
                           }
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          wrapperClassName="absolute inset-0"
                         />
                       </div>
                       <figcaption className="border-t border-slate-100 bg-slate-50/80 px-4 py-2.5 text-center text-xs font-semibold text-slate-500">

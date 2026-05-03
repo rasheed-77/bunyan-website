@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   FaMapMarkerAlt,
   FaLayerGroup,
@@ -9,6 +8,11 @@ import {
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import ProjectExtendedDetails from "@/components/projects/ProjectExtendedDetails";
+import {
+  ProjectDetailLightboxProvider,
+  ProjectDetailLightboxImage,
+  type LightboxSlide,
+} from "@/components/projects/ProjectDetailLightbox";
 import { getProjectById, getProjectCoverImage } from "@/data/projects";
 import { CONTACT_WHATSAPP_URL } from "@/data/contact";
 
@@ -56,8 +60,26 @@ export default function ProjectDetailPage({
     project.gallerySectionTitle ??
     (isImageFocusedLayout ? "معرض الصور الرئيسية" : "معرض الصور");
 
+  const gallerySlides: LightboxSlide[] = galleryImages.map((src, index) => ({
+    src,
+    alt: `${project.title} — صورة ${index + 2}`,
+  }));
+  const heroSlides: LightboxSlide[] = [{ src: heroSrc, alt: project.title }];
+  const finalViewSlides: LightboxSlide[] = finalViewImages.map((src, index) => ({
+    src,
+    alt:
+      finalViewImages.length === 1
+        ? `${project.title} — الشكل النهائي بعد التنفيذ`
+        : `${project.title} — الشكل النهائي ${index + 1}`,
+  }));
+  const imageFocusedDesignSlides: LightboxSlide[] =
+    project.designGallery?.map((src, index) => ({
+      src,
+      alt: `${project.title} — مخطط ${index + 1}`,
+    })) ?? [];
+
   return (
-    <>
+    <ProjectDetailLightboxProvider>
       <Navbar />
 
       <article className="min-h-[50vh] bg-white pb-16 sm:pb-20">
@@ -76,20 +98,23 @@ export default function ProjectDetailPage({
                 : "shadow-[0_28px_60px_-18px_rgba(15,23,42,0.45)] ring-1 ring-white/10"
             }`}
           >
-            <Image
+            <ProjectDetailLightboxImage
               src={heroSrc}
               alt={project.title}
+              slides={heroSlides}
+              slideIndex={0}
               fill
               priority
+              sizes="100vw"
+              wrapperClassName="absolute inset-0"
               className={
                 isDetailBrandTone
                   ? "object-cover brightness-[1.02] contrast-[1.045] saturate-[1.03]"
                   : "object-cover"
               }
-              sizes="100vw"
             />
             <div
-              className={`absolute inset-0 ${
+              className={`pointer-events-none absolute inset-0 ${
                 hasExtendedSheet
                   ? "bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-900/20"
                   : "bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-slate-950/10"
@@ -203,7 +228,7 @@ export default function ProjectDetailPage({
           </header>
         </div>
 
-        {gallerySpotlight && galleryImages.length > 0 ? (
+        {gallerySpotlight && galleryImages.length > 0 && project.id !== 7 ? (
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
             <section
               className="mb-12 sm:mb-14 lg:mb-16"
@@ -237,9 +262,11 @@ export default function ProjectDetailPage({
                             : "md:col-span-3 min-h-[200px] sm:min-h-[240px] md:min-h-[280px]"
                       }`}
                     >
-                      <Image
+                      <ProjectDetailLightboxImage
                         src={src}
                         alt={`${project.title} — صورة ${index + 2}`}
+                        slides={gallerySlides}
+                        slideIndex={index}
                         fill
                         className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
                         sizes={
@@ -247,6 +274,119 @@ export default function ProjectDetailPage({
                             ? "(max-width: 768px) 100vw, 100vw"
                             : "(max-width: 768px) 100vw, 50vw"
                         }
+                        wrapperClassName="absolute inset-0"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
+        ) : null}
+
+        {project.id === 7 &&
+        project.designGallerySections &&
+        project.designGallerySections.length > 0 ? (
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <section
+              className="mb-12 sm:mb-14 lg:mb-16"
+              aria-labelledby="design-sections-heading"
+            >
+              <div className="mb-6 border-b border-slate-200/90 pb-5 sm:mb-8 sm:pb-6">
+                <h2
+                  id="design-sections-heading"
+                  className="text-2xl font-extrabold tracking-tight text-indigo-950 sm:text-3xl"
+                >
+                  المخططات والتصاميم
+                </h2>
+              </div>
+              <div className="space-y-10 sm:space-y-12">
+                {project.designGallerySections.map((section, si) => {
+                  const sectionSlides: LightboxSlide[] = section.images.map(
+                    (src, ii) => ({
+                      src,
+                      alt: `${project.title} — ${section.title} — ${ii + 1}`,
+                    })
+                  );
+                  return (
+                    <div key={`${section.title}-${si}`}>
+                      <h3 className="mb-4 text-xl font-bold text-indigo-950 sm:text-2xl">
+                        {section.title}
+                      </h3>
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+                        {section.images.map((src, ii) => (
+                          <div
+                            key={`${src}-${ii}`}
+                            className="relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-sm ring-1 ring-black/5 transition hover:ring-indigo-200/80"
+                          >
+                            <ProjectDetailLightboxImage
+                              src={src}
+                              alt={`${project.title} — ${section.title} — ${ii + 1}`}
+                              slides={sectionSlides}
+                              slideIndex={ii}
+                              fill
+                              className="bg-white p-2 object-contain transition-transform duration-500 ease-out brightness-[1.02] contrast-[1.02] hover:scale-[1.02] hover:brightness-[1.04]"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              wrapperClassName="absolute inset-0"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </div>
+        ) : null}
+
+        {project.id === 7 && gallerySpotlight && galleryImages.length > 0 ? (
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <section
+              className="mb-12 sm:mb-14 lg:mb-16"
+              aria-labelledby="project-execution-gallery-heading"
+            >
+              <div className="mb-6 border-b border-slate-200/90 pb-5 sm:mb-8 sm:pb-6">
+                <h2
+                  id="project-execution-gallery-heading"
+                  className="text-2xl font-extrabold tracking-tight text-indigo-950 sm:text-3xl"
+                >
+                  {gallerySectionHeading}
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-6 md:gap-6">
+                {galleryImages.map((src, index) => {
+                  const isLead = index === 0;
+                  const restCount = galleryImages.length - 1;
+                  const isLastOdd =
+                    !isLead &&
+                    index === galleryImages.length - 1 &&
+                    restCount > 0 &&
+                    restCount % 2 === 1;
+                  return (
+                    <div
+                      key={`exec-${src}-${index}`}
+                      className={`group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100 shadow-[0_20px_50px_-18px_rgba(15,23,42,0.35)] ring-1 ring-black/[0.06] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_60px_-20px_rgba(49,46,129,0.22)] hover:ring-indigo-200/60 ${
+                        isLead
+                          ? "md:col-span-6 min-h-[240px] sm:min-h-[300px] md:min-h-[min(52vh,440px)] lg:min-h-[min(56vh,520px)]"
+                          : isLastOdd
+                            ? "md:col-span-6 min-h-[220px] sm:min-h-[260px] md:min-h-[300px]"
+                            : "md:col-span-3 min-h-[200px] sm:min-h-[240px] md:min-h-[280px]"
+                      }`}
+                    >
+                      <ProjectDetailLightboxImage
+                        src={src}
+                        alt={`${project.title} — صورة تنفيذ ${index + 2}`}
+                        slides={gallerySlides}
+                        slideIndex={index}
+                        fill
+                        className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+                        sizes={
+                          isLead || isLastOdd
+                            ? "(max-width: 768px) 100vw, 100vw"
+                            : "(max-width: 768px) 100vw, 50vw"
+                        }
+                        wrapperClassName="absolute inset-0"
                       />
                     </div>
                   );
@@ -406,6 +546,60 @@ export default function ProjectDetailPage({
             </ul>
           </section>
 
+          {project.designGallerySections &&
+          project.designGallerySections.length > 0 &&
+          project.id !== 7 ? (
+            <section
+              className="mb-12 sm:mb-14"
+              aria-labelledby="design-sections-heading"
+            >
+              <div className="mb-6 border-b border-slate-200/90 pb-5 sm:mb-8 sm:pb-6">
+                <h2
+                  id="design-sections-heading"
+                  className="text-2xl font-extrabold tracking-tight text-indigo-950 sm:text-3xl"
+                >
+                  المخططات والتصاميم
+                </h2>
+              </div>
+              <div className="space-y-10 sm:space-y-12">
+                {project.designGallerySections.map((section, si) => {
+                  const sectionSlides: LightboxSlide[] = section.images.map(
+                    (src, ii) => ({
+                      src,
+                      alt: `${project.title} — ${section.title} — ${ii + 1}`,
+                    })
+                  );
+                  return (
+                    <div key={`${section.title}-${si}`}>
+                      <h3 className="mb-4 text-xl font-bold text-indigo-950 sm:text-2xl">
+                        {section.title}
+                      </h3>
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+                        {section.images.map((src, ii) => (
+                          <div
+                            key={`${src}-${ii}`}
+                            className="relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-[0_10px_40px_-12px_rgba(15,23,42,0.18)] ring-1 ring-black/[0.04] transition duration-300 hover:shadow-[0_18px_48px_-14px_rgba(49,46,129,0.18)] hover:ring-indigo-200/50"
+                          >
+                            <ProjectDetailLightboxImage
+                              src={src}
+                              alt={`${project.title} — ${section.title} — ${ii + 1}`}
+                              slides={sectionSlides}
+                              slideIndex={ii}
+                              fill
+                              className="bg-white object-contain p-2 transition duration-300 brightness-[1.02] contrast-[1.02] hover:brightness-[1.04]"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              wrapperClassName="absolute inset-0"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
+
           {!gallerySpotlight ? (
             <section className="mb-12 sm:mb-14" aria-labelledby="gallery-heading">
               <h2
@@ -430,9 +624,11 @@ export default function ProjectDetailPage({
                         : "relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-sm ring-1 ring-black/5 transition hover:ring-indigo-200/80"
                     }
                   >
-                    <Image
+                    <ProjectDetailLightboxImage
                       src={src}
                       alt={`${project.title} — صورة ${index + 2} من المعرض`}
+                      slides={gallerySlides}
+                      slideIndex={index}
                       fill
                       className={
                         isDetailBrandTone
@@ -440,6 +636,7 @@ export default function ProjectDetailPage({
                           : "object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
                       }
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      wrapperClassName="absolute inset-0"
                     />
                   </div>
                 ))}
@@ -510,12 +707,15 @@ export default function ProjectDetailPage({
                     key={`${src}-${index}`}
                     className="relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-sm ring-1 ring-black/5 transition hover:ring-indigo-200/80"
                   >
-                    <Image
+                    <ProjectDetailLightboxImage
                       src={src}
                       alt={`${project.title} — مخطط ${index + 1}`}
+                      slides={imageFocusedDesignSlides}
+                      slideIndex={index}
                       fill
                       className="bg-white p-2 object-contain transition-transform duration-500 ease-out brightness-[1.02] contrast-[1.02] hover:scale-[1.02] hover:brightness-[1.04]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      wrapperClassName="absolute inset-0"
                     />
                   </div>
                 ))}
@@ -564,9 +764,11 @@ export default function ProjectDetailPage({
                       : "relative h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gray-100 shadow-lg ring-1 ring-black/[0.04] lg:h-[600px]"
                   }
                 >
-                  <Image
+                  <ProjectDetailLightboxImage
                     src={finalViewImages[0]}
                     alt={`${project.title} — الشكل النهائي بعد التنفيذ`}
+                    slides={finalViewSlides}
+                    slideIndex={0}
                     fill
                     className={
                       isProject1DetailTone
@@ -574,6 +776,7 @@ export default function ProjectDetailPage({
                         : "object-contain object-center transition-transform duration-500 ease-out hover:scale-[1.01]"
                     }
                     sizes="100vw"
+                    wrapperClassName="absolute inset-0"
                   />
                 </div>
               ) : (
@@ -587,9 +790,11 @@ export default function ProjectDetailPage({
                           : "relative h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gray-100 shadow-lg ring-1 ring-black/[0.04] transition hover:ring-indigo-200/70 lg:h-[600px]"
                       }
                     >
-                      <Image
+                      <ProjectDetailLightboxImage
                         src={src}
                         alt={`${project.title} — الشكل النهائي ${index + 1}`}
+                        slides={finalViewSlides}
+                        slideIndex={index}
                         fill
                         className={
                           isProject1DetailTone
@@ -597,6 +802,7 @@ export default function ProjectDetailPage({
                             : "object-contain object-center transition-transform duration-500 ease-out hover:scale-[1.01]"
                         }
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        wrapperClassName="absolute inset-0"
                       />
                     </div>
                   ))}
@@ -644,6 +850,6 @@ export default function ProjectDetailPage({
       </article>
 
       <Footer />
-    </>
+    </ProjectDetailLightboxProvider>
   );
 }

@@ -82,6 +82,8 @@ export interface ProjectRecord {
   extendedSheet?: ProjectExtendedSheet;
   /** مخططات وتصاميم إضافية — اختيارية */
   designGallery?: string[];
+  /** معرض مخططات مقسّم إلى أقسام فرعية — اختياري */
+  designGallerySections?: Array<{ title: string; images: string[] }>;
   /** صور الشكل النهائي بعد التنفيذ — مسارات تحت مجلد `last view` لكل مشروع */
   finalViewGallery?: string[];
   /** شارة على بطاقة المشروع في صفحة قائمة المشاريع */
@@ -442,12 +444,12 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
   {
     id: 7,
     title: "مشروع هناجر مع عمارة",
-    location: "عدن – اليمن",
-    type: "هناجر + مبنى متعدد الاستخدام",
+    location: "عدن — العريش",
+    type: "مقاولات – تصاميم – إشراف هندسي",
     shortDescription:
-      "تنفيذ مشروع يجمع بين الهناجر والمباني متعددة الاستخدام، مع مراعاة أعلى معايير الجودة في التنفيذ والتخطيط.",
+      "تنفيذ مشروع يجمع بين الهناجر والمباني متعددة الاستخدام في منطقة العريش — عدن، مع مقاولات وتصاميم وإشراف هندسي، ومراعاة أعلى معايير الجودة في التنفيذ والتخطيط.",
     description:
-      "يعد هذا المشروع من المشاريع التي تعكس خبرة شركة بنيان في تنفيذ المشاريع المتنوعة، حيث يجمع بين الهياكل المعدنية (الهناجر) والمباني الخرسانية في موقع واحد، مع تنفيذ متكامل يراعي الجودة والدقة في جميع مراحل العمل.",
+      "يعد هذا المشروع من المشاريع التي تعكس خبرة شركة بنيان في تنفيذ المشاريع المتنوعة، حيث يجمع بين الهياكل المعدنية (الهناجر) والمباني الخرسانية في موقع واحد بمنطقة العريش — محافظة عدن، مع تنفيذ متكامل يراعي الجودة والدقة في جميع مراحل العمل.",
     completedWorks: [
       "تنفيذ الهيكل المعدني للهناجر",
       "أعمال الخرسانة والبناء",
@@ -464,7 +466,24 @@ export const PROJECT_RECORDS: ProjectRecord[] = [
       "/Image/Seventh Project/Image (14).jpg",
       "/Image/Seventh Project/Image (15).jpg",
     ],
-    gallerySectionTitle: "لقطات من المشروع",
+    designGallerySections: [
+      {
+        title: "تصاميم الهنجر",
+        images: [
+          "/Image/Seventh Project/design-arch/Screenshot 2026-05-03 080121.png",
+        ],
+      },
+      {
+        title: "تصاميم المبنى",
+        images: [
+          "/Image/Seventh Project/design - arch/Screenshot 2026-05-03 075804.png",
+          "/Image/Seventh Project/design - arch/Screenshot 2026-05-03 075933.png",
+          "/Image/Seventh Project/design - arch/Screenshot 2026-05-03 080007.png",
+          "/Image/Seventh Project/design - arch/Screenshot 2026-05-03 080051.png",
+        ],
+      },
+    ],
+    gallerySectionTitle: "صور التنفيذ",
     galleryPresentation: "spotlight",
   },
 ];
